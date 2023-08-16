@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Progress Bar</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    #progressBar {
+      width: 0;
+      height: 5px;
+      background-color: #007bff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      transition: width 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="progressBar"></div>
+  <h1>Scroll Down to See Progress</h1>
+  <!-- Add more content to make scrolling necessary -->
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+  <script>
+    window.addEventListener('scroll', function() {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollableDistance = documentHeight - windowHeight;
+      const scrolledDistance = window.scrollY;
+      const progress = (scrolledDistance / scrollableDistance) * 100;
+      const progressBar = document.getElementById('progressBar');
+      progressBar.style.width = `${progress}%`;
+    });
+  </script>
+</body>
+</html>

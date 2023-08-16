@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Movement</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    #image {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="image"></div>
+  <script>
+    const image = document.getElementById('image');
+    let xPosition = 0;
+    let yPosition = 0;
+    const moveAmount = 10;
+
+    function updatePosition() {
+      image.style.transform = `translate(${xPosition}px, ${yPosition}px)`;
+    }
+
+    document.addEventListener('keydown', function(event) {
+      switch (event.key) {
+        case 'ArrowUp':
+          yPosition -= moveAmount;
+          break;
+        case 'ArrowDown':
+          yPosition += moveAmount;
+          break;
+        case 'ArrowLeft':
+          xPosition -= moveAmount;
+          break;
+        case 'ArrowRight':
+          xPosition += moveAmount;
+          break;
+        default:
+          return;
+      }
+      updatePosition();
+    });
+  </script>
+</body>
+</html>
